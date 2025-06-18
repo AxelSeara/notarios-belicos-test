@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="gl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proba de Acceso – Irmandade Notarial Belicosa</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #f0f0f0;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ff3366;
+    }
+    .question {
+      margin-bottom: 2rem;
+    }
+    label {
+      display: block;
+      margin: 0.5rem 0;
+      cursor: pointer;
+    }
+    button {
+      background: #ff3366;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      cursor: pointer;
+      display: block;
+      margin: 2rem auto;
+    }
+    #result {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 2rem;
+      color: #66ff99;
+    }
+    #telegramLink {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    #telegramLink a {
+      color: #66ccff;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Proba de Acceso – Irmandade Notarial Belicosa</h1>
+  <form id="testForm">
+    <div class="question">
+      <p>1. Cal é o sistema máis eficaz para a protección antiaérea en contornos urbanos?</p>
+      <label><input type="radio" name="q1" value="B"> Domo de Ferro</label>
+      <label><input type="radio" name="q1" value="A"> S-400</label>
+      <label><input type="radio" name="q1" value="C"> Patriot</label>
+      <label><input type="radio" name="q1" value="D"> Estilo emocional evasivo</label>
+    </div>
+    <div class="question">
+      <p>2. Consecuencia técnica do uso de HIMARS en Ucraína:</p>
+      <label><input type="radio" name="q2" value="B"> Disrupción loxística rusa</label>
+      <label><input type="radio" name="q2" value="A"> Disfunción do Kremlin</label>
+      <label><input type="radio" name="q2" value="C"> A ONU enfádase</label>
+      <label><input type="radio" name="q2" value="D"> Volven as Spice Girls</label>
+    </div>
+    <div class="question">
+      <p>3. Caza furtivo que che fai sentir pequeno:</p>
+      <label><input type="radio" name="q3" value="C"> F-35 Lightning II</label>
+      <label><input type="radio" name="q3" value="A"> Su-35</label>
+      <label><input type="radio" name="q3" value="B"> Typhoon</label>
+      <label><input type="radio" name="q3" value="D"> Caza TIE</label>
+    </div>
+    <div class="question">
+      <p>4. Opinión sobre a exministra de igualdade Irene Montero:</p>
+      <label><input type="radio" name="q4" value="C"> Comeflores</label>
+      <label><input type="radio" name="q4" value="A"> Fogo amigo</label>
+      <label><input type="radio" name="q4" value="B"> Guía de tiro con perspectiva de xénero</label>
+      <label><input type="radio" name="q4" value="D"> Exocet progresista</label>
+    </div>
+    <div class="question">
+      <p>5. Protocolo israelí ante aeronaves sospeitosas:</p>
+      <label><input type="radio" name="q5" value="C"> Destrucción preventiva</label>
+      <label><input type="radio" name="q5" value="A"> Saúdo por radar</label>
+      <label><input type="radio" name="q5" value="B"> Advertencia sonora</label>
+      <label><input type="radio" name="q5" value="D"> Transferencia ao Ministerio de Igualdade</label>
+    </div>
+    <button type="button" onclick="calcularResultado()">Enviar respostas</button>
+    <div id="result"></div>
+    <div id="telegramLink"></div>
+  </form>
+  <script>
+    function calcularResultado() {
+      const respostasCorrectas = {
+        q1: "B",
+        q2: "B",
+        q3: "C",
+        q4: "C",
+        q5: "C"
+      };
+      let acertos = 0;
+      for (let q in respostasCorrectas) {
+        const r = document.querySelector(`input[name="${q}"]:checked`);
+        if (r && r.value === respostasCorrectas[q]) acertos++;
+      }
+      const res = document.getElementById("result");
+      const link = document.getElementById("telegramLink");
+      res.textContent = `🎯 Fixeches ${acertos} acertos.`;
+
+      let mensaxe = "";
+      if (acertos === 5) mensaxe = "🔥 Nivel: Estratéx@ Supremo. Benvid@!";
+      else if (acertos >= 3) mensaxe = "🫡 Superaches a proba mínima. Aceptad@, pimpínote.";
+      else if (acertos >= 1) mensaxe = "🤔 Case... pero imos deixarche pasar igual, pola túa cara.";
+      else mensaxe = "💀 Fallaches todo. Pero mira, a democracia é o que ten. Pasa.";
+
+      res.textContent += "\n" + mensaxe;
+      link.innerHTML = '<a href="https://t.me/+4OqAA3fZcWU5ZjE8" target="_blank">👉 Únete ao canal da Irmandade</a>';
+    }
+  </script>
+</body>
+</html>
